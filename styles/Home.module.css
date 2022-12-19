@@ -154,6 +154,16 @@
   padding-bottom: 100px;
 }
 
+.ArticlesList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.ArticlesItem {
+  height: 100%;
+}
+
 .FilterArticles {
   flex-shrink: 0;
   width: 274px;
@@ -208,6 +218,28 @@
 .ArticlesSection {
   position: relative;
   background-color: white;
+}
+
+.ArticlesWrapper {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.ArticlesTitle {
+  color: #3f454a;
+  font-family: "Caveat";
+  font-size: 80px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 38px;
+  text-align: center;
+}
+
+.ArticlesBrush {
+  position: absolute;
+  bottom: -60px;
 }
 
 .ArticlesProducts {
@@ -295,7 +327,6 @@
   transition: all 300ms ease;
 }
 
-
 .OrderedList {
   display: grid;
   gap: 30px;
@@ -312,16 +343,38 @@
   background-color: white;
 }
 
+.ContactWrapper {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.ContactTitle {
+  color: #3f454a;
+  font-family: "Caveat";
+  font-size: 80px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 38px;
+  text-align: center;
+}
+
+.ContactBrush {
+  bottom: -60px;
+  position: absolute;
+}
+
 .FormContent {
   width: 100%;
-  padding-top: 100px;
-  padding-bottom: 100px;
 }
 
 .FormStyles {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-top: 100px;
+  padding-bottom: 100px;
 }
 
 .FormInternal {
@@ -405,4 +458,41 @@
 .ContactFormStyle {
   color: #3f454a;
   font-size: 48px;
+}
+
+@media (max-width: 768px) {
+  .ArticlesFlexible {
+    flex-direction: column;
+  }
+
+  .ArticlesTitle {
+    font-size: 40px;
+  }
+
+  .FilterArticles {
+    width: 100%;
+  }
+
+  .ArticlesProducts {
+    margin-top: 30px;
+    margin-left: 0;
+  }
+
+  .OrderedList {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .ContactTitle {
+    font-size: 40px;
+  }
+
+  .FormInternalStyle {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 500px) {
+  .OrderedList {
+    grid-template-columns: 1fr;
+  }
 }
