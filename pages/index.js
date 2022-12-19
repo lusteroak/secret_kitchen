@@ -120,7 +120,7 @@ const Form = () => {
                   priority
                   src={brush}
                   alt="brush element"
-                  style={{ opacity: 0.2 }}
+                  style={{ opacity: 0.25 }}
                   />
             <form className={styles.FormInternalStyle} action="https://5eed24da4cbc340016330f0d.mockapi.io/api/newsletter" method="post">
                 
