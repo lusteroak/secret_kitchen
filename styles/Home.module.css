@@ -1,3 +1,40 @@
+.Container {
+  max-width: 100%;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+@media (min-width: 576px) {
+  .Container {
+    max-width: 540px;
+  }
+}
+
+@media (min-width: 768px) {
+  .Container {
+    max-width: 720px;
+  }
+}
+
+@media (min-width: 992px) {
+  .Container {
+    max-width: 960px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .Container {
+    max-width: 1270px;
+  }
+}
+
+@media (min-width: 1400px) {
+  .Container {
+    max-width: 1270px;
+  }
+}
+
 .MainStyle {
   background-color: #ffffff;
 }
@@ -16,6 +53,21 @@
 .WrapperHero {
   position: relative;
   width: 100%;
+  height: 805px;
+}
+
+.WrapperHeroVeil {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: -50px;
+  left: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 55%,
+    rgba(255, 255, 255, 1) 90%
+  );
 }
 
 .WrapperImage {
@@ -54,6 +106,16 @@
   color: #3f454a;
 }
 
+.HeroBackground {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  object-fit: cover;
+  user-select: none;
+  pointer-events: none;
+  z-index: -1;
+}
+
 .OurArticles {
   position: relative;
   display: flex;
@@ -85,32 +147,72 @@
   color: #3f454a;
 }
 
-.FilterArticles > ul {
+.ArticlesFlexible {
   display: flex;
-  flex-direction: column;
-  background-color: #ffffff;
-  width: 20rem;
-  height: 15rem;
-  padding: 2rem;
-  margin: 2rem;
-  border: 3px solid #ffffff;
+  flex-direction: row;
+  padding-top: 100px;
+  padding-bottom: 100px;
 }
 
-.FilterArticles > ul > li {
-  margin: 1rem;
+.FilterArticles {
+  flex-shrink: 0;
+  width: 274px;
+  min-height: 319px;
+  height: fit-content;
+  padding: 24px;
+  border-radius: 10px;
+  background-color: white;
+  box-shadow: 0px 4px 40px rgba(0, 0, 0, 0.07);
+}
+
+.FilterArticles ul {
+  margin: 0;
+  padding: 0;
   list-style: none;
 }
 
+.SelectedFilter {
+  font-weight: 700 !important;
+  color: #d8ad3d !important;
+}
+
+.FilterArticles li {
+  font-weight: 400;
+  color: #24272a;
+}
+
+.FilterArticles li + li {
+  margin-top: 24px;
+}
+
+.FilterArticles button {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  display: inline-flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  font-family: "Open Sans";
+  font-style: normal;
+  font-weight: inherit;
+  font-size: 12px;
+  line-height: 23px;
+  letter-spacing: 0.03em;
+  color: inherit;
+  text-transform: uppercase;
+  background-color: transparent;
+  transition: all 300ms ease;
+}
+
 .ArticlesSection {
-  display: flex;
-  flex-direction: row;
+  position: relative;
+  background-color: white;
 }
 
 .ArticlesProducts {
-  margin: 0;
-  padding: 2rem;
-  display: grid;
-  grid-template-columns: repeat(3, 2fr);
+  width: 100%;
+  margin-left: 30px;
 }
 
 .ArticlesCard > img {
@@ -193,10 +295,28 @@
   transition: all 300ms ease;
 }
 
+
 .OrderedList {
-  list-style-type:none;
+  display: grid;
+  gap: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(auto, 270px));
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 /* Card Styles */
+
+/* Contact */
+.ContactSection {
+  position: relative;
+  background-color: white;
+}
+
+.FormContent {
+  width: 100%;
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
 
 .FormStyles {
   display: flex;
@@ -204,9 +324,82 @@
   align-items: center;
 }
 
+.FormInternal {
+  display: flex;
+  flex-direction: column;
+  max-width: 726px;
+  width: 100%;
+  margin: auto;
+}
+
 .FormInternalStyle {
   display: grid;
-  grid-template-columns: repeat(2, 2fr);
+  gap: 24px;
+  grid-template-columns: repeat(2, 1fr);
+  place-items: center;
+}
+
+.FormGroup {
+  width: 100%;
+}
+
+.FormLabel {
+  display: block;
+  margin-bottom: 4px;
+  font-family: "Open Sans";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 13px;
+  line-height: 24px;
+  text-transform: uppercase;
+  color: #24272a;
+}
+
+.FormInput {
+  width: 100%;
+  padding: 12px 22px;
+  border: 1px solid #cfcfcf;
+  font-family: "Open Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  color: #3f4544;
+  transition: all 300ms ease;
+}
+
+.FormInput:focus {
+  outline: none;
+  border-color: #d8ad3d;
+}
+
+.FormInput:hover {
+  border-color: #d8ad3d;
+}
+
+.FormButton {
+  display: inline-block;
+  padding: 14.5px 57.9px;
+  margin-top: 30px;
+  margin-right: auto;
+  margin-left: auto;
+  border: 0;
+  border-radius: 50px;
+  font-family: "Open Sans";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 26px;
+  text-align: center;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: white;
+  background-color: #d8ad3d;
+  transition: all 300ms ease;
+}
+
+.FormButton:hover {
+  background-color: #009cd9;
 }
 
 .ContactFormStyle {
