@@ -109,6 +109,53 @@ const Articles = () => {
   );
 };
 
+const Form = () => {
+  return (
+    <div className={[styles.FormStyles, caveat.className].join(" ") }>
+                  <h3 className={styles.ContactFormStyle}>Contáctanos</h3>
+                  <Image
+                  className={BrushStyle}
+                  width={500}
+                  height={100}
+                  priority
+                  src={brush}
+                  alt="brush element"
+                  style={{ opacity: 0.2 }}
+                  />
+            <form className={styles.FormInternalStyle}>
+                
+                <div class={opensans.className}>
+                    <label for="name">NOMBRE</label>
+                    <br />
+                    <input type="text" id="nombre" required />
+                </div>
+                
+                <div class={opensans.className}>
+                    <label for="company">APELLIDO</label>
+                    <br />
+                    <input type="text" id="apellido" required />
+                </div>
+                
+                <div class={opensans.className}>
+                    <label for="email">MAIL</label>
+                    <br />
+                    <input type="email" id="mail" required />
+                </div>
+                
+                <div class={opensans.className}>
+                    <label for="telephone">TELEFONO</label>
+                    <br />
+                    <input type="tel" id="telephone" required />
+                </div>
+                
+                <div class={opensans.className}>
+                    <input type="submit" value="ENVIAR" />
+                </div>
+            </form>
+    </div>
+  )
+}
+
 export default function Home() {
   return (
     <>
@@ -166,6 +213,7 @@ export default function Home() {
           />
         </div>
         <Articles />
+        <Form />
       </main>
     </>
   );
