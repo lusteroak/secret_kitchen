@@ -122,16 +122,16 @@ const Form = () => {
                   alt="brush element"
                   style={{ opacity: 0.2 }}
                   />
-            <form className={styles.FormInternalStyle}>
+            <form className={styles.FormInternalStyle} action="https://5eed24da4cbc340016330f0d.mockapi.io/api/newsletter" method="post">
                 
                 <div class={opensans.className}>
-                    <label for="name">NOMBRE</label>
+                    <label for="firstname">NOMBRE</label>
                     <br />
                     <input type="text" id="nombre" required />
                 </div>
                 
                 <div class={opensans.className}>
-                    <label for="company">APELLIDO</label>
+                    <label for="lastname">APELLIDO</label>
                     <br />
                     <input type="text" id="apellido" required />
                 </div>
@@ -143,7 +143,7 @@ const Form = () => {
                 </div>
                 
                 <div class={opensans.className}>
-                    <label for="telephone">TELEFONO</label>
+                    <label for="phone">TELEFONO</label>
                     <br />
                     <input type="tel" id="telephone" required />
                 </div>
