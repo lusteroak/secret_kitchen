@@ -12,7 +12,7 @@ import youtube from "../assets/youtube.svg";
 import hero from "../styles/Hero.module.css";
 import styles from "../styles/Home.module.css";
 import navbar from "../styles/Navbar.module.css";
-import { CardArticle } from "./Components/CardArticle";
+import { CardArticle } from "./CardArticle";
 
 // Navbar styles
 const { NavSection, Nav, NavList, NavItem, NavLink } = navbar;
