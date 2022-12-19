@@ -53,6 +53,12 @@
 
 @media (max-width: 768px) {
   .HeroTitle {
-    font-size: 56px;
+    font-size: 110px;
+  }
+}
+
+@media (max-width: 500px) {
+  .HeroContent {
+    top: 60%;
   }
 }
