@@ -1,38 +1,44 @@
 import Head from "next/head";
 import Image from "next/image";
-import { useState, useEffect } from "react";
-import { Caveat, Open_Sans } from "@next/font/google";
+import Link from "next/link";
+import { useEffect, useState } from "react";
+import brushTwo from "../assets/brush-2.svg";
+import brush from "../assets/brush.svg";
+import facebook from "../assets/facebook.svg";
+import heroImage from "../assets/hero.png";
+import instagram from "../assets/instagram.svg";
+import logo from "../assets/logo.svg";
+import youtube from "../assets/youtube.svg";
+import hero from "../styles/Hero.module.css";
 import styles from "../styles/Home.module.css";
-import hero from "../assets/hero.png";
-import brush from "../assets/brush.png";
-import number1 from "../assets/1.png";
-import number2 from "../assets/2.png";
-import number3 from "../assets/3.png";
-import { CardArticle } from "./CardArticle";
+import navbar from "../styles/Navbar.module.css";
+import { CardArticle } from "./Components/CardArticle";
 
-const caveat = Caveat({
-  weigth: ["500"],
-  style: ["normal"],
-  subsets: ["latin"],
-});
+// Navbar styles
+const { NavSection, Nav, NavList, NavItem, NavLink } = navbar;
 
-const opensans = Open_Sans({
-  weight: ["500"],
-  style: ["normal"],
-  subsets: ["latin"],
-});
+// Hero styles
+const {
+  HeroSection,
+  HeroContent,
+  HeroTitle,
+  HeroBrush,
+  HeroBackground,
+  HeroVeil,
+} = hero;
 
 const {
+  ArticlesBrush,
   ArticlesFlexible,
+  ArticlesList,
   ArticlesSection,
-  BrushStyle,
-  BrushStyleHero,
-  ContactFormStyle,
+  ArticlesTitle,
+  ArticlesWrapper,
+  ContactBrush,
   ContactSection,
+  ContactTitle,
+  ContactWrapper,
   Container,
-  ContentHero,
-  ContentTextHero,
-  ContextTextHeroTitle,
   FilterArticles,
   FormButton,
   FormContent,
@@ -42,15 +48,79 @@ const {
   FormInternalStyle,
   FormLabel,
   FormStyles,
-  HeaderElement,
-  HeroBackground,
-  logo,
-  OurArticles,
   SelectedFilter,
-  social,
-  WrapperHero,
-  WrapperHeroVeil,
 } = styles;
+
+const Header = ({ children }) => {
+  return <header>{children}</header>;
+};
+
+const Main = ({ children }) => {
+  return <main>{children}</main>;
+};
+
+const Navbar = () => {
+  const links = [
+    {
+      link: "https://www.facebook.com/",
+      logo: facebook,
+      color: "#009cd9",
+    },
+    {
+      link: "https://www.instagram.com/",
+      logo: instagram,
+      color: "#b72c2c",
+    },
+    {
+      link: "https://www.youtube.com/",
+      logo: youtube,
+      color: "#d8ad3d",
+    },
+  ];
+
+  return (
+    <div className={NavSection}>
+      <div className={Container}>
+        <nav className={Nav}>
+          <Link href="/">
+            <Image src={logo} alt="Logo" quality={100} />
+          </Link>
+
+          <ul className={NavList}>
+            {links.map((link) => (
+              <li className={NavItem} style={{ borderColor: link.color }}>
+                <a href={link.link} target="_blank" className={NavLink}>
+                  <Image
+                    src={
+                      link.logo ? link.logo : "https://via.placeholder.com/150"
+                    }
+                    alt="Logo"
+                    quality={100}
+                  />
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </div>
+    </div>
+  );
+};
+
+const Hero = () => {
+  return (
+    <section className={HeroSection}>
+      <div className={HeroContent}>
+        <div className={Container}>
+          <h1 className={HeroTitle}>El secreto de tu cocina</h1>
+        </div>
+        <Image src={brush} alt="Brush" className={HeroBrush} />
+      </div>
+      <Image src={heroImage} alt="Fondo" className={HeroBackground} />
+      <div className={HeroVeil} />
+    </section>
+  );
+};
 
 const Articles = () => {
   const [selectedFilter, setSelectedFilter] = useState("");
@@ -86,9 +156,13 @@ const Articles = () => {
   return (
     <section className={ArticlesSection}>
       <div className={Container}>
+        <div className={ArticlesWrapper}>
+          <h2 className={ArticlesTitle}>Nuestros artículos</h2>
+          <Image src={brushTwo} alt="Pintura" className={ArticlesBrush} />
+        </div>
         <div className={ArticlesFlexible}>
           <aside className={FilterArticles}>
-            <ul>
+            <ul className={ArticlesList}>
               <li className={selectedFilter === "" ? SelectedFilter : null}>
                 <button type="button" value="" onClick={handleFilter}>
                   Todos
@@ -125,17 +199,11 @@ const Form = () => {
   return (
     <section className={ContactSection}>
       <div className={Container}>
-        <div className={[FormStyles, caveat.className].join(" ")}>
-          <h3 className={ContactFormStyle}>Contáctanos</h3>
-          <Image
-            className={BrushStyle}
-            width={500}
-            height={100}
-            priority
-            src={brush}
-            alt="brush element"
-            style={{ opacity: 0.25 }}
-          />
+        <div className={ContactWrapper}>
+          <h2 className={ContactTitle}>Contáctanos</h2>
+          <Image src={brushTwo} alt="Pintura" className={ContactBrush} />
+        </div>
+        <div className={FormStyles}>
           <div className={FormContent}>
             <form
               className={FormInternal}
@@ -214,39 +282,19 @@ export default function Home() {
           href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Open+Sans&display=swap"
         />
       </Head>
-      <header className={WrapperHero}>
-        <div className={ContentHero}>
-          <div className={[HeaderElement, caveat.className].join(" ")}>
-            <h1 className={logo}>Logo</h1>
-            <ul className={social}>
-              <li>Facebok</li>
-              <li>Instagram</li>
-              <li>YouTube</li>
-            </ul>
-          </div>
 
-          <div className={[ContentTextHero, caveat.className].join(" ")}>
-            <h2 className={ContextTextHeroTitle}>El secreto de tu cocina</h2>
-            <Image
-              className={BrushStyleHero}
-              width={600}
-              height={150}
-              priority
-              src={brush}
-              alt="brush element"
-            />
-          </div>
-        </div>
-        <Image
-          priority
-          src={hero}
-          alt="Hero image"
-          className={HeroBackground}
-        />
-        <div className={WrapperHeroVeil}></div>
-      </header>
-      <main className="styles.MainStyle">
-        <div className={[OurArticles, caveat.className].join(" ")}>
+      <Header>
+        <Navbar />
+        <Hero />
+      </Header>
+
+      <Main>
+        <Articles />
+        <Form />
+      </Main>
+
+      {/* <main className={styles.MainStyle}>
+        <div className={OurArticles}>
           <h3 className={styles.Centerh3}>Nuestros artículos</h3>
           <Image
             className={BrushStyle}
@@ -260,7 +308,7 @@ export default function Home() {
         </div>
         <Articles />
         <Form />
-      </main>
+      </main> */}
     </>
   );
 }
