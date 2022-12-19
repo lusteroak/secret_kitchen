@@ -49,9 +49,15 @@ const Articles = () => {
   }
   
   const getProducts = async () => {
-    const data = await fetch(`https://5eed24da4cbc340016330f0d.mockapi.io/api/articles`)
+    const data = await fetch(`https://5eed24da4cbc340016330f0d.mockapi.io/api/articles?filter=${selectedFilter}`)
     .then(response => response.json())
     .then(data => data)
+
+    if (filters && !filters.length) {
+      const mappedCategories = data.map(product => product.category)
+      const categories = ['Todos', ...new Set(mappedCategories)]
+      setFilters(categories)
+    }
     
     const mappedCategories = data.map(product => product.category)
     const categories = ['Todos', ...new Set(mappedCategories)]
